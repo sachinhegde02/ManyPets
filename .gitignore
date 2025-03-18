@@ -2,3 +2,8 @@
 target/
 dbt_packages/
 logs/
+# Ignore virtual environments
+dbt_venv/
+venv/
+.env/
+
