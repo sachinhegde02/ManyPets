@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: manypets_src        
+    database: dev             
+    schema: rdl               
+    tables:
+      - name: orders          
+        description: "Raw orders data stored in JSON format"
+      - name: order_complete         
+        description: "Raw orders complete data stored in JSON format"

@@ -1,0 +1,141 @@
+version: 2
+
+models:
+  - name: stg_orders
+    description: "Staging model for orders containing details about the order, customer, and pets."
+    columns:
+      - name: order_id
+        description: "Unique identifier for the order."
+        tests:
+          - not_null
+
+      - name: customer_email
+        description: "Customer's email address."
+        tests:
+          - not_null
+
+      - name: customer_name
+        description: "Full name of the customer (first name + last name)."
+
+      - name: customer_dob
+        description: "Customer's date of birth."
+
+      - name: customer_phone
+        description: "Customer's phone number."
+
+      - name: customer_address
+        description: "Full address of the customer (concatenation of address lines)."
+
+      - name: customer_city
+        description: "City of the customer."
+
+      - name: customer_country
+        description: "Country of the customer."
+
+      - name: customer_postcode
+        description: "Postcode of the customer."
+
+      - name: pet_id
+        description: "Unique identifier for the pet."
+
+      - name: pet_name
+        description: "Name of the pet."
+        tests:
+          - not_null
+
+      - name: pet_dob
+        description: "Pet's date of birth."
+        tests:
+          - not_null
+
+      - name: pet_breed
+        description: "Breed of the pet."
+
+      - name: pet_gender
+        description: "Gender of the pet."
+
+      - name: pet_species
+        description: "Species of the pet (dog, cat, etc.)."
+
+      - name: pedigree_type
+        description: "Indicates whether the pet is a pedigree."
+
+      - name: spayed_neutered
+        description: "Boolean flag indicating if the pet is spayed/neutered."
+
+      - name: pet_postcode
+        description: "Postcode associated with the pet."
+
+      - name: pet_value
+        description: "Monetary value of the pet."
+
+      - name: order_create_date
+        description: "Date when the order was placed."
+
+      - name: order_create_timestamp
+        description: "Timestamp when the order was created."
+
+      - name: cessation_date
+        description: "Date when the order ends."
+
+      - name: affiliate_code
+        description: "Affiliate code associated with the order."
+
+      - name: source
+        description: "Source of the event (e.g., mp.shop)."
+
+      - name: type
+        description: "Type of event (e.g., data.order.created)."
+
+      - name: event_time
+        description: "Timestamp when the event occurred."
+
+      - name: order_effective_date
+        description: "Date when the order will be effected."
+
+      - name: ingest_date
+        description: "Date when the record was ingested into the system."
+        tests:
+          - not_null
+
+  - name: stg_order_complete
+    description: "Staging model for completed orders."
+    columns:
+      - name: order_id
+        description: "Unique identifier for the order."
+        tests:
+          - not_null
+
+      - name: customer_id
+        description: "Unique identifier for the customer."
+        tests:
+          - not_null
+
+      - name: pet_id
+        description: "Unique identifier for the pet associated with the order."
+        tests:
+          - not_null
+
+      - name: intent
+        description: "Intent associated with the order (e.g., purchase, subscription)."
+
+      - name: tenant
+        description: "Tenant or marketplace where the event originated."
+
+      - name: source
+        description: "Source of the event (e.g., mp.shop)."
+
+      - name: type
+        description: "Type of event (e.g., data.order.created)."
+
+      - name: order_complete_date
+        description: "Date when the order was placed."
+
+      - name: order_complete_timestamp
+        description: "Timestamp when the order was created."
+
+      - name: ingest_date
+        description: "Date when the record was ingested into the system."
+        tests:
+          - not_null
+

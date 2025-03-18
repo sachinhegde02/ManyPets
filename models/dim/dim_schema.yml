@@ -1,0 +1,91 @@
+version: 2
+
+models:
+  - name: dim_customers
+    description: "Dimension model for customers"
+    columns:
+      - name: customer_nk
+        description: "Natural key for the customer, derived from customer_email."
+        tests:
+          - not_null
+          - unique
+      
+      - name: customer_sk
+        description: "Surrogate key for the customer generated using dbt_utils.generate_surrogate_key."
+        tests:
+          - not_null
+      
+      - name: customer_name
+        description: "Full name of the customer."
+      
+      - name: customer_dob
+        description: "Date of birth of the customer."
+      
+      - name: customer_phone
+        description: "Phone number of the customer."
+      
+      - name: customer_address
+        description: "Address of the customer."
+      
+      - name: customer_city
+        description: "City of the customer."
+      
+      - name: customer_country
+        description: "Country of the customer."
+      
+      - name: customer_postcode
+        description: "Postcode of the customer."
+      
+      - name: ingest_date
+        description: "Date when the record was ingested."
+        tests:
+          - not_null
+
+  - name: dim_pets
+    description: "Dimension model for pets"
+    columns:
+      - name: pet_nk
+        description: "Natural key for the pet, derived from customer_email, pet_name, pet_dob, and pet_breed."
+        tests:
+          - not_null
+          - unique
+      
+      - name: pet_sk
+        description: "Surrogate key for the pet generated using dbt_utils.generate_surrogate_key."
+        tests:
+          - not_null
+      
+      - name: pet_name
+        description: "Name of the pet."
+      
+      - name: pet_dob
+        description: "Date of birth of the pet."
+      
+      - name: pet_breed
+        description: "Breed of the pet."
+      
+      - name: pet_gender
+        description: "Gender of the pet."
+      
+      - name: pet_species
+        description: "Species of the pet."
+      
+      - name: pedigree_type
+        description: "Indicates whether the pet is a pedigree."
+      
+      - name: spayed_neutered
+        description: "Boolean flag indicating if the pet is spayed/neutered."
+      
+      - name: pet_postcode
+        description: "Postcode associated with the pet."
+      
+      - name: pet_value
+        description: "Monetary value of the pet."
+      
+      - name: ingest_date
+        description: "Date when the record was ingested."
+        tests:
+          - not_null
+      
+      - name: customer_sk
+        description: "Foreign key referencing the customer in dim_customers."
